@@ -1,45 +1,245 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Assignment 2</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bejamas — Premium Photos</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Navbar -->
-  <header class="navbar">
-    <h1>My Website</h1>
-    <nav>
-      <a href="#">Home</a>
-      <a href="#">About</a>
-      <a href="#">Contact</a>
-    </nav>
+  <!-- ===== Header ===== -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="#">BEJAMAS_<span class="sr-only">Home</span></a>
+      <button class="cart-btn" aria-label="Cart">
+        <!-- tiny bag icon -->
+        <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M6 7h12l-1 12H7L6 7Z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M9 7V6a3 3 0 0 1 6 0v1" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        </svg>
+      </button>
+    </div>
   </header>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <h2>Welcome to Assignment 2</h2>
-    <p>This is a demo built from the Figma design.</p>
-    <button id="cta-btn">Click Me</button>
-  </section>
+  <main>
+    <!-- ===== Product Hero ===== -->
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-head">
+          <h1 class="hero-title">Samurai King Resting</h1>
+          <button class="btn btn-dark add-to-cart" data-product="Samurai King Resting">ADD TO CART</button>
+        </div>
 
-  <!-- Card Section -->
-  <section class="cards">
-    <div class="card">
-      <h3>Card One</h3>
-      <p>Some description text here.</p>
-    </div>
-    <div class="card">
-      <h3>Card Two</h3>
-      <p>Some description text here.</p>
-    </div>
-    <div class="card">
-      <h3>Card Three</h3>
-      <p>Some description text here.</p>
-    </div>
-  </section>
+        <figure class="hero-media">
+          <!-- large dog photo -->
+          <img src="https://images.unsplash.com/photo-1568572933382-74d440642117?q=80&w=1470&auto=format&fit=crop" alt="Samurai King Resting photo" />
+          <figcaption class="badge">Photo of the day</figcaption>
+        </figure>
 
-  <script src="script.js"></script>
+        <div class="hero-grid">
+          <article class="about">
+            <h2 class="h6">About the Samurai King Resting</h2>
+            <p class="pill">Pets</p>
+            <p class="muted">
+              So how did the classical Latin become so incoherent? According to McClintock,
+              a 15th century typesetter likely scrambled part of Cicero’s <em>De Finibus</em>
+              in order to provide placeholder text to mockup various fonts for a type specimen book.
+              So how did the classical Latin become so incoherent? According to McClintock…
+            </p>
+          </article>
+
+          <aside class="also-buy">
+            <h3 class="h6">People also buy</h3>
+            <ul class="thumbs">
+              <li><img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=600&auto=format&fit=crop" alt="Yellow wall" /></li>
+              <li><img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=600&auto=format&fit=crop" alt="Plants" /></li>
+              <li><img src="https://images.unsplash.com/photo-1512149177596-f817c7ef5d99?q=80&w=600&auto=format&fit=crop" alt="Egg balloon" /></li>
+            </ul>
+          </aside>
+
+          <aside class="details">
+            <h3 class="h6">Details</h3>
+            <dl class="meta">
+              <div><dt>Size:</dt><dd>1020 × 1020 pixel</dd></div>
+              <div><dt>Size:</dt><dd>15 mb</dd></div>
+            </dl>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Catalog ===== -->
+    <section class="catalog">
+      <div class="container">
+        <header class="catalog-head">
+          <div class="crumbs">
+            <strong>Photography</strong><span class="slash">/</span><span class="muted">Premium Photos</span>
+          </div>
+
+          <div class="catalog-actions">
+            <button class="filter-open" aria-controls="filter-drawer">
+              <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 7h16M7 12h10M10 17h4" fill="none" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+              <span class="hide-mobile">Filter</span>
+            </button>
+
+            <div class="sort">
+              <span class="muted hide-mobile">Sort By</span>
+              <button class="sort-btn" aria-expanded="false">Price
+                <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="m6 9 6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                </svg>
+              </button>
+              <ul class="sort-menu" hidden>
+                <li><button data-sort="price-asc">Price: Low → High</button></li>
+                <li><button data-sort="price-desc">Price: High → Low</button></li>
+                <li><button data-sort="name-asc">Name: A → Z</button></li>
+              </ul>
+            </div>
+          </div>
+        </header>
+
+        <div class="catalog-body">
+          <!-- Sidebar Filters (desktop) -->
+          <aside class="filters" id="filters">
+            <form id="filter-form">
+              <h4 class="filters-title">Category</h4>
+              <ul class="checklist">
+                <li><label><input type="checkbox" name="cat" value="People"> <span>People</span></label></li>
+                <li><label><input type="checkbox" name="cat" value="Premium"> <span>Premium</span></label></li>
+                <li><label><input type="checkbox" name="cat" value="Pets" checked> <span>Pets</span></label></li>
+                <li><label><input type="checkbox" name="cat" value="Food" checked> <span>Food</span></label></li>
+                <li><label><input type="checkbox" name="cat" value="Landmarks" checked> <span>Landmarks</span></label></li>
+                <li><label><input type="checkbox" name="cat" value="Cities"> <span>Cities</span></label></li>
+                <li><label><input type="checkbox" name="cat" value="Nature"> <span>Nature</span></label></li>
+              </ul>
+
+              <h4 class="filters-title">Price range</h4>
+              <ul class="checklist">
+                <li><label><input type="checkbox" name="price" value="lt20"> <span>Lower than $20</span></label></li>
+                <li><label><input type="checkbox" name="price" value="20-100"> <span>$20 – $100</span></label></li>
+                <li><label><input type="checkbox" name="price" value="100-200" checked> <span>$100 – $200</span></label></li>
+                <li><label><input type="checkbox" name="price" value="gt200"> <span>More than $200</span></label></li>
+              </ul>
+            </form>
+          </aside>
+
+          <!-- Product Grid -->
+          <section class="grid" id="grid">
+            <!-- row 1 -->
+            <article class="card" data-name="Red Bench" data-cat="People" data-price="3.89">
+              <div class="card-media">
+                <img src="https://images.unsplash.com/photo-1441040744088-a70b8213d4d4?q=80&w=1200&auto=format&fit=crop" alt="Red Bench"/>
+                <div class="bar">ADD TO CART</div>
+                <span class="flag">Best Seller</span>
+              </div>
+              <div class="card-meta">
+                <span class="label">People</span>
+                <h3 class="title">Red Bench</h3>
+                <div class="price">$3.89</div>
+              </div>
+            </article>
+
+            <article class="card" data-name="Egg Balloon" data-cat="Food" data-price="93.89">
+              <div class="card-media">
+                <img src="https://images.unsplash.com/photo-1512149177596-f817c7ef5d99?q=80&w=1200&auto=format&fit=crop" alt="Egg Balloon"/>
+                <div class="bar">ADD TO CART</div>
+              </div>
+              <div class="card-meta">
+                <span class="label">Food</span>
+                <h3 class="title">Egg Balloon</h3>
+                <div class="price">$93.89</div>
+              </div>
+            </article>
+
+            <article class="card" data-name="Egg Balloon" data-cat="Food" data-price="93.89">
+              <div class="card-media">
+                <img src="https://images.unsplash.com/photo-1512149177596-f817c7ef5d99?q=80&w=1200&auto=format&fit=crop" alt="Egg Balloon"/>
+                <div class="bar">ADD TO CART</div>
+              </div>
+              <div class="card-meta">
+                <span class="label">Food</span>
+                <h3 class="title">Egg Balloon</h3>
+                <div class="price">$93.89</div>
+              </div>
+            </article>
+
+            <!-- row 2 -->
+            <article class="card" data-name="Man" data-cat="People" data-price="100.00">
+              <div class="card-media">
+                <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=1200&auto=format&fit=crop" alt="Man"/>
+                <div class="bar">ADD TO CART</div>
+              </div>
+              <div class="card-meta">
+                <span class="label">People</span>
+                <h3 class="title">Man</h3>
+                <div class="price">$100.00</div>
+              </div>
+            </article>
+
+            <article class="card" data-name="Architecture" data-cat="Landmarks" data-price="101.00">
+              <div class="card-media">
+                <img src="https://images.unsplash.com/photo-1549880338-65ddcdfd017b?q=80&w=1200&auto=format&fit=crop" alt="Architecture"/>
+                <div class="bar">ADD TO CART</div>
+              </div>
+              <div class="card-meta">
+                <span class="label">Landmarks</span>
+                <h3 class="title">Architecture</h3>
+                <div class="price">$101.00</div>
+              </div>
+            </article>
+
+            <article class="card" data-name="Architecture" data-cat="Landmarks" data-price="101.00">
+              <div class="card-media">
+                <img src="https://images.unsplash.com/photo-1549880338-65ddcdfd017b?q=80&w=1200&auto=format&fit=crop" alt="Architecture"/>
+                <div class="bar">ADD TO CART</div>
+              </div>
+              <div class="card-meta">
+                <span class="label">Landmarks</span>
+                <h3 class="title">Architecture</h3>
+                <div class="price">$101.00</div>
+              </div>
+            </article>
+          </section>
+        </div>
+
+        <!-- Pagination -->
+        <nav class="pagination" aria-label="Pagination">
+          <button class="page-arrow" aria-label="Previous">‹</button>
+          <button class="page is-active">1</button>
+          <button class="page">2</button>
+          <button class="page">3</button>
+          <button class="page">4</button>
+          <button class="page-arrow" aria-label="Next">›</button>
+        </nav>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== Mobile Filter Drawer ===== -->
+  <aside class="drawer" id="filter-drawer" aria-hidden="true">
+    <div class="drawer-head">
+      <div class="crumbs"><strong>Photography</strong><span class="slash">/</span><span class="muted">Premium Photos</span></div>
+      <button class="drawer-close" aria-label="Close">✕</button>
+    </div>
+
+    <div class="drawer-body">
+      <!-- same filter form reused -->
+      <form class="drawer-form"></form>
+    </div>
+
+    <div class="drawer-foot">
+      <button class="btn btn-ghost drawer-clear">CLEAR</button>
+      <button class="btn btn-dark drawer-save">SAVE</button>
+    </div>
+  </aside>
+
+  <!-- overlay -->
+  <div class="overlay" data-overlay hidden></div>
+
+  <script src="script.js" defer></script>
 </body>
 </html>
